@@ -3,3 +3,11 @@
 voir TOC
 
 export DATABASE_URL="postgresql://postgres:postgres@localhost:5432/wordcount_dev"
+
+flask db init
+flask db migrate
+flask db upgrade
+
+FLASK_ENV=development flask run
+
+python -m nltk.downloader # change download loc into nltk_data + dw plunkt
