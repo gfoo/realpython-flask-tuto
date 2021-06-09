@@ -8,7 +8,9 @@ class Config(object):
     TESTING = False
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    # fix: https://stackoverflow.com/questions/66690321/flask-and-heroku-sqlalchemy-exc-nosuchmoduleerror-cant-load-plugin-sqlalchemy
+    SQLALCHEMY_DATABASE_URI = os.environ.get(
+        'DATABASE_URL').replace("postgres://", "postgresql://", 1)
 
 
 class ProductionConfig(Config):
