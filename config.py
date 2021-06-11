@@ -10,7 +10,7 @@ class Config(object):
     SECRET_KEY = 'this-really-needs-to-be-changed'
     # fix: heroku db url use old posgtres driver name for alchemy
     SQLALCHEMY_DATABASE_URI = os.environ.get(
-        'DATABASE_URL').replace("postgres://", "postgresql://", 1)
+        'DATABASE_URL','').replace("postgres://", "postgresql://", 1)
 
 
 class ProductionConfig(Config):

@@ -18,7 +18,7 @@ joblib==1.0.1
 Mako==1.1.4
 MarkupSafe==2.0.1
 nltk==3.6.2
-psycopg2==2.8.6
+psycopg2-binary==2.8.6
 pycodestyle==2.7.0
 python-dateutil==2.8.1
 python-editor==1.0.4

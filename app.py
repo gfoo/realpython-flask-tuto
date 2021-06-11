@@ -58,6 +58,11 @@ def count_and_save_words(url):
     no_stop_words_count = Counter(no_stop_words)
 
     # save the results
+    import json
+    print('----')
+    print(url)
+    print(json.dumps(raw_word_count))
+    print(json.dumps(no_stop_words_count))
     try:
         result = Result(
             url=url,
@@ -67,7 +72,8 @@ def count_and_save_words(url):
         db.session.add(result)
         db.session.commit()
         return result.id
-    except:
+    except Exception as e:
+        print(e)
         errors.append("Unable to add item to database.")
         return {"error": errors}
 
@@ -77,7 +83,7 @@ def index():
     results = {}
     if request.method == "POST":
         # # this import solves a rq bug which currently exists
-        # from app import count_and_save_words
+        from app import count_and_save_words
 
         # get url that the person has entered
         url = request.form['url']
